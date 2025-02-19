@@ -4,7 +4,7 @@ version: 0.0.1
 homepage: https://github.com/jiejie-dev/flutter_file_md5
 
 environment:
-  sdk: ">=2.18.4 <3.0.0"
+  sdk: ">=2.18.4 <4.0.0"
   flutter: ">=1.17.0"
 
 dependencies:
@@ -22,16 +22,6 @@ dev_dependencies:
 flutter:
   plugin:
     platforms:
-      android:
-        default_package: file_md5
-      ios:
-        default_package: file_md5
       web:
         pluginClass: FileMD5Web
         fileName: web/file_md5.dart
-      macos:
-        default_package: file_md5
-      windows:
-        default_package: file_md5
-      linux:
-        default_package: file_md5
