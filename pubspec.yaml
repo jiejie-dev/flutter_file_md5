@@ -1,6 +1,6 @@
 name: file_md5
 description: A Flutter package with streamed MD5 calculation.
-version: 0.0.1
+version: 0.3.0
 homepage: https://github.com/jiejie-dev/flutter_file_md5
 
 environment:
