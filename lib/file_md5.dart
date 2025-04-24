@@ -2,8 +2,8 @@ library file_md5;
 
 import 'package:convert/convert.dart';
 import 'package:crypto/crypto.dart';
-import 'package:flutter/foundation.dart';
 import 'package:async/async.dart';
+import 'package:file_md5/cancel_token.dart';
 
 class FileMD5 {
   static Future<Digest?> get({
@@ -11,9 +11,9 @@ class FileMD5 {
     required int size,
     int chunkSize = 4096 * 64,
     void Function(bool done, double progress)? onProgress,
-    ValueNotifier<bool>? canceled,
+    CancelToken? cancelToken,
   }) async {
-    final startTime = kDebugMode ? DateTime.now().millisecondsSinceEpoch : 0;
+    final startTime = DateTime.now().millisecondsSinceEpoch;
 
     final reader = ChunkedStreamReader(stream);
     // const chunkSize = 4096 * 64;
@@ -23,7 +23,7 @@ class FileMD5 {
     var readed = 0;
 
     try {
-      while (!(canceled?.value ?? false)) {
+      while (!(cancelToken?.isCancelled ?? false)) {
         final chunk = await reader.readChunk(chunkSize);
         if (chunk.isEmpty) {
           break;
@@ -42,14 +42,12 @@ class FileMD5 {
       input.close();
     }
 
-    if (canceled?.value ?? false) {
+    if (cancelToken?.isCancelled ?? false) {
       return null;
     }
 
-    if (kDebugMode) {
-      final delta = DateTime.now().millisecondsSinceEpoch - startTime;
-      print('MD5 time $delta');
-    }
+    final delta = DateTime.now().millisecondsSinceEpoch - startTime;
+    print('MD5 time $delta');
 
     if (null != onProgress) {
       onProgress(true, 1.0);
