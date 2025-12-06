@@ -46,8 +46,8 @@ class FileMD5 {
       return null;
     }
 
-    final delta = DateTime.now().millisecondsSinceEpoch - startTime;
-    print('MD5 time $delta');
+    // final delta = DateTime.now().millisecondsSinceEpoch - startTime;
+    // print('MD5 time $delta');
 
     if (null != onProgress) {
       onProgress(true, 1.0);
