@@ -1,3 +1,7 @@
+## 0.2.1+1
+
+ - **REFACTOR**: Comment out timing debug statements in FileMD5 class.
+
 ## 0.2.1
 
  - **REFACTOR**: Change DigestSink class to implement Sink interface.

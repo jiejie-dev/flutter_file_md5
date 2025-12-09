@@ -1,7 +1,7 @@
 name: file_md5
 resolution: workspace
 description: A Flutter package with streamed MD5 calculation.
-version: 0.2.1
+version: 0.2.1+1
 homepage: https://github.com/jiejie-dev/flutter_file_md5
 
 environment:
