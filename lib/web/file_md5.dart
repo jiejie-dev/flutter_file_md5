@@ -1,3 +1,5 @@
+import 'dart:developer' show log;
+// ignore: deprecated_member_use — Web 端仍依赖 dart:html FileReader；迁移至 package:web 时移除此忽略
 import 'dart:html';
 
 import 'package:crypto/crypto.dart' as crypto;
@@ -36,7 +38,7 @@ class FileMD5Web {
       }
 
       final delta = DateTime.now().millisecondsSinceEpoch - startTime;
-      print('MD5 time $delta');
+      log('MD5 time $delta');
     } finally {
       outerSink.close();
     }

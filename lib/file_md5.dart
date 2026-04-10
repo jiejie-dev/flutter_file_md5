@@ -1,5 +1,3 @@
-library file_md5;
-
 import 'package:convert/convert.dart';
 import 'package:crypto/crypto.dart';
 import 'package:async/async.dart';
@@ -13,8 +11,6 @@ class FileMD5 {
     void Function(bool done, double progress)? onProgress,
     CancelToken? cancelToken,
   }) async {
-    final startTime = DateTime.now().millisecondsSinceEpoch;
-
     final reader = ChunkedStreamReader(stream);
     // const chunkSize = 4096 * 64;
     var output = AccumulatorSink<Digest>();
@@ -45,9 +41,6 @@ class FileMD5 {
     if (cancelToken?.isCancelled ?? false) {
       return null;
     }
-
-    // final delta = DateTime.now().millisecondsSinceEpoch - startTime;
-    // print('MD5 time $delta');
 
     if (null != onProgress) {
       onProgress(true, 1.0);
