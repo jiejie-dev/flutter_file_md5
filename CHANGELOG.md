@@ -1,3 +1,7 @@
+## 0.2.1+2
+
+ - **REFACTOR**: Replace print statements with log in FileMD5Web and remove timing debug statements in FileMD5.
+
 ## 0.2.1+1
 
  - **REFACTOR**: Comment out timing debug statements in FileMD5 class.
